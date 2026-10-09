@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import HomePage from "./screens/Home";
 import VagasPage from "./screens/Vagas";
+import RelatoriosPage from "./screens/Relatorios";
 import ClientsPage from "./screens/Clients";
 import { useControler } from "./providers/HeaderControler";
 
@@ -10,6 +11,7 @@ const screens: Record<string, ReactNode> = {
   Home: <HomePage />,
   Vagas: <VagasPage />,
   Clientes: <ClientsPage />,
+  Relatorios: <RelatoriosPage />,
 };
 
 export default function Home() {

@@ -18,7 +18,13 @@ export type IconName =
   | "edit"
   | "filter"
   | "users"
-  | "trash";
+  | "trash"
+  | "file"
+  | "download"
+  | "wallet"
+  | "cliente"
+  | "close";
+
 
 type IconProps = {
   name: IconName;
@@ -45,6 +51,32 @@ parking: (
       <>
         <path d="M3 10 12 3l9 7v11H3V10Z" />
         <path d="M7 21v-8h10v8" />
+      </>
+    ),
+
+        cliente: (
+      <>
+        <circle cx="12" cy="8" r="4" />
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      </>
+    ),
+
+    file: (
+      <>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+        <path d="M14 2v6h6M8 13h8M8 17h6" />
+      </>
+    ),
+    download: (
+      <>
+        <path d="M12 3v12M7 10l5 5 5-5" />
+        <path d="M5 21h14" />
+      </>
+    ),
+    wallet: (
+      <>
+        <path d="M20 7V5a2 2 0 0 0-2-2H5a3 3 0 0 0 0 6h15v12H5a3 3 0 0 1-3-3V6" />
+        <path d="M16 14h.01" />
       </>
     ),
 
@@ -114,6 +146,7 @@ parking: (
       </>
     ),
     plus: <path d="M12 5v14M5 12h14" />,
+    close:<path d="M18 6 6 18M6 6l12 12" />,
     more: (
       <>
         <circle cx="5" cy="12" r="1" fill="currentColor" stroke="none" />

@@ -1,6 +1,28 @@
 import Icon from "@/app/components/Icon";
+import { useVagancie, Vagancie } from "@/app/providers/Vagancie";
+import { useState } from "react";
+import { useClient } from "@/app/providers/Clients";
+import type { Client } from "@/app/providers/Clients";
 
 export default function CreateVacancyCard() {
+
+  const { ArrayClients } = useClient();
+  const { setNewVagancie } = useVagancie();
+
+  const [data, setData] = useState<Vagancie>({
+    number: "",
+    client: undefined,
+    busy: false,
+    ferias: {
+      is: false,
+      exit: "",
+      returnDate: ""
+    },
+    pago: false,
+    value: 0,
+  });
+
+
   return (
     <aside className="h-fit overflow-hidden rounded-[17px] border border-[#dce5df] bg-white shadow-sm shadow-emerald-950/5 xl:sticky xl:top-5">
       <div className="bg-gradient-to-br from-[#226c51] to-[#18533d] px-5 py-6 text-white">
@@ -20,33 +42,32 @@ export default function CreateVacancyCard() {
           </label>
           <input
             className="h-10 w-full rounded-[9px] border border-[#dfe4e0] bg-[#fafbfa] px-3 text-xs outline-none placeholder:text-[#a9afab] focus:border-[#5d907a]"
-            id="vacancy-code"
+            onChange={(e) => setData({ ...data, number: e.target.value })}
             type="text"
             placeholder="Ex.: A-15"
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <div>
+        <div className="grid grid-cols-1 gap-3">
+          <div className="w-full">
             <label className="mb-1.5 block text-[10px] font-bold text-[#59635d]" htmlFor="sector">
-              Setor
+              Cliente
             </label>
-            <select className="h-10 w-full rounded-[9px] border border-[#dfe4e0] bg-[#fafbfa] px-3 text-xs text-[#78807b] outline-none" id="sector">
-              <option>Setor A</option>
-              <option>Setor B</option>
-              <option>Setor C</option>
-            </select>
-          </div>
-          <div>
-            <label className="mb-1.5 block text-[10px] font-bold text-[#59635d]" htmlFor="type">
-              Tipo
-            </label>
-            <select className="h-10 w-full rounded-[9px] border border-[#dfe4e0] bg-[#fafbfa] px-3 text-xs text-[#78807b] outline-none" id="type">
-              <option>Coberta</option>
-              <option>Descoberta</option>
-              <option>PCD</option>
-              <option>Moto</option>
-            </select>
+<select
+  value={data.client?.id ?? ""}
+  onChange={(e) => {
+    const client = ArrayClients.find((c) => c.id === e.target.value);
+    setData({ ...data, client, busy: !!client });
+  }}
+  className="h-10 w-full rounded-[9px] border border-[#dfe4e0] bg-[#fafbfa] px-3 text-xs text-[#78807b] outline-none"
+>
+  <option value="">Selecione um cliente</option>
+  {ArrayClients.map((client) => (
+    <option key={client.id} value={client.id}>
+      {client.name}
+    </option>
+  ))}
+</select>
           </div>
         </div>
 
@@ -56,39 +77,15 @@ export default function CreateVacancyCard() {
           </label>
           <div className="flex h-10 items-center rounded-[9px] border border-[#dfe4e0] bg-[#fafbfa] px-3 focus-within:border-[#5d907a]">
             <span className="mr-2 text-[10px] font-bold text-[#87908a]">R$</span>
-            <input className="min-w-0 flex-1 bg-transparent text-xs outline-none placeholder:text-[#a9afab]" id="price" type="text" placeholder="0,00" />
+            <input className="min-w-0 flex-1 bg-transparent text-xs outline-none placeholder:text-[#a9afab]" onChange={(e) => setData({ ...data, value: parseFloat(e.target.value) || 0 })} type="text" placeholder="0,00" />
           </div>
         </div>
-
-        <div>
-          <span className="mb-2 block text-[10px] font-bold text-[#59635d]">Status inicial</span>
-          <div className="grid grid-cols-2 gap-2">
-            <label className="flex items-center gap-2 rounded-[9px] border border-emerald-200 bg-emerald-50 px-3 py-2.5 text-[10px] font-semibold text-emerald-700">
-              <input defaultChecked name="status" type="radio" className="accent-emerald-700" />
-              Disponível
-            </label>
-            <label className="flex items-center gap-2 rounded-[9px] border border-[#e2e6e2] px-3 py-2.5 text-[10px] font-semibold text-[#78807b]">
-              <input name="status" type="radio" className="accent-emerald-700" />
-              Inativa
-            </label>
-          </div>
-        </div>
-
-        <label className="flex gap-2.5 rounded-[10px] bg-[#f5f7f5] p-3">
-          <input type="checkbox" className="mt-0.5 size-3.5 accent-emerald-700" />
-          <span>
-            <strong className="block text-[10px]">Possui ponto de recarga</strong>
-            <small className="mt-0.5 block text-[9px] leading-relaxed text-[#969d98]">
-              Marque para vagas destinadas a veículos elétricos.
-            </small>
-          </span>
-        </label>
 
         <div className="flex gap-2 pt-1">
           <button className="h-10 flex-1 rounded-[9px] border border-[#dfe4e0] bg-white text-[10px] font-bold text-[#747d77]" type="button">
             Cancelar
           </button>
-          <button className="h-10 flex-[1.4] rounded-[9px] bg-[#1d654b] text-[10px] font-bold text-white shadow-md shadow-emerald-900/10" type="button">
+          <button onClick={() => setNewVagancie(data)} className="h-10 flex-[1.4] rounded-[9px] bg-[#1d654b] text-[10px] font-bold text-white shadow-md shadow-emerald-900/10" type="button">
             Criar vaga
           </button>
         </div>

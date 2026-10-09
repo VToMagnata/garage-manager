@@ -1,41 +1,41 @@
+"use client";
+
 import Icon from "@/app/components/Icon";
 import CustomerList from "./components/CustomerList";
 import CreateCustomerCard from "./components/CreateCustomerCard";
 import DashboardHeader from "../../components/DashboardHeader";
 import Sidebar from "../../components/Sidebar";
-
-const stats = [
-  {
-    label: "Total de clientes",
-    value: "184",
-    note: "+12 neste mês",
-    icon: "users" as const,
-    tone: "bg-[#e9f2ed] text-[#285e49]",
-  },
-  {
-    label: "Clientes ativos",
-    value: "167",
-    note: "90,7% da base",
-    icon: "users" as const,
-    tone: "bg-emerald-50 text-emerald-700",
-  },
-  {
-    label: "Veículos vinculados",
-    value: "213",
-    note: "1,15 por cliente",
-    icon: "car" as const,
-    tone: "bg-sky-50 text-sky-700",
-  },
-  {
-    label: "Novos cadastros",
-    value: "12",
-    note: "Últimos 30 dias",
-    icon: "plus" as const,
-    tone: "bg-violet-50 text-violet-700",
-  },
-];
+import { useClient } from "@/app/providers/Clients";
 
 export default function ClientsPage() {
+  const { ArrayClients } = useClient();
+
+  const stats = [
+    {
+      label: "Total de clientes",
+      value: ArrayClients.length,
+      note: "Clientes cadastrados",
+      icon: "users" as const,
+      tone: "bg-[#e9f2ed] text-[#285e49]",
+    },
+    {
+      label: "Veículos vinculados",
+      value: ArrayClients.filter(
+        (client) => client.carro?.modelo || client.carro?.placa
+      ).length,
+      note: "Veículos cadastrados",
+      icon: "car" as const,
+      tone: "bg-sky-50 text-sky-700",
+    },
+    {
+      label: "Novos cadastros",
+      value: "—",
+      note: "Data de cadastro indisponível",
+      icon: "plus" as const,
+      tone: "bg-violet-50 text-violet-700",
+    },
+  ];
+
   return (
     <>
       <Sidebar />
@@ -44,7 +44,7 @@ export default function ClientsPage() {
         <DashboardHeader />
 
         <div className="p-4 sm:p-6">
-          <section className="mb-[18px] grid grid-cols-2 gap-3 lg:grid-cols-4">
+          <section className="mb-[18px] grid grid-cols-2 gap-3 lg:grid-cols-3">
             {stats.map((item) => (
               <article
                 className="rounded-2xl border border-[#e1e6e1] bg-white p-4 shadow-sm shadow-emerald-950/5 sm:p-[19px]"
@@ -55,10 +55,13 @@ export default function ClientsPage() {
                 >
                   <Icon name={item.icon} className="size-[18px]" />
                 </div>
+
                 <p className="text-[10px] text-[#89918c]">{item.label}</p>
+
                 <strong className="mt-0.5 block text-2xl tracking-[-0.05em] sm:text-[29px]">
                   {item.value}
                 </strong>
+
                 <small className="mt-1 block text-[9px] text-[#a0a6a2]">
                   {item.note}
                 </small>

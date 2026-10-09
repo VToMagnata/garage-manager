@@ -5,8 +5,9 @@ import { useControler } from "../../providers/HeaderControler";
 
 const menuItems: { label: string; name: string; icon: IconName }[] = [
   { label: "Visão geral", name: "Home", icon: "grid" },
-  { label: "Vagas", name: "Vagas", icon: "parking" },
+  { label: "Vagas", name: "Vagas", icon: "garageEmpty" },
   { label: "Relatórios", name: "Relatorios", icon: "chart" },
+  { label: "Clientes", name: "Clientes", icon: "cliente" },
 ];
 
 export default function Sidebar() {
