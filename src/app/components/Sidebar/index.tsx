@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import Icon, { type IconName } from "../Icon";
 import { useControler } from "../../providers/HeaderControler";
 
@@ -10,16 +12,29 @@ const menuItems: { label: string; name: string; icon: IconName }[] = [
   { label: "Clientes", name: "Clientes", icon: "cliente" },
 ];
 
-export default function Sidebar() {
+function SidebarContent({ onClose }: { onClose?: () => void }) {
   const { name, setName } = useControler();
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-30 hidden w-[246px] flex-col border-r border-[#e3e7e2] bg-[#fbfcfa] px-[18px] pb-5 pt-7 lg:flex">
-      <div className="flex items-center gap-3 px-2.5 text-xl font-bold tracking-[-0.04em]">
-        <span className="grid size-[34px] place-items-center rounded-[10px] bg-[#1f6b4f] text-white shadow-lg shadow-emerald-900/15">
-          <Icon name="parking" className="size-[19px]" />
-        </span>
-        Salin
+    <>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3 px-2.5 text-xl font-bold tracking-[-0.04em]">
+          <span className="grid size-[34px] place-items-center rounded-[10px] bg-[#1f6b4f] text-white shadow-lg shadow-emerald-900/15">
+            <Icon name="parking" className="size-[19px]" />
+          </span>
+          Salin
+        </div>
+
+        {onClose && (
+          <button
+            className="grid size-9 place-items-center rounded-lg border border-[#e1e6e2] bg-white text-[#7c857f]"
+            type="button"
+            aria-label="Fechar menu"
+            onClick={onClose}
+          >
+            <Icon name="close" className="size-4" />
+          </button>
+        )}
       </div>
 
       <nav className="mt-9" aria-label="Navegação principal">
@@ -63,6 +78,68 @@ export default function Sidebar() {
           <Icon name="more" className="size-4" />
         </button>
       </div>
-    </aside>
+    </>
+  );
+}
+
+export default function Sidebar() {
+  const { menuOpen, setMenuOpen } = useControler();
+
+  // ESC fecha e bloqueia o scroll do fundo enquanto o menu está aberto
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen, setMenuOpen]);
+
+  // Se a tela crescer para desktop com o menu aberto, fecha a gaveta
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setMenuOpen(false);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, [setMenuOpen]);
+
+  return (
+    <>
+      {/* Desktop: sidebar fixa */}
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-[246px] flex-col border-r border-[#e3e7e2] bg-[#fbfcfa] px-[18px] pb-5 pt-7 lg:flex">
+        <SidebarContent />
+      </aside>
+
+      {/* Mobile: gaveta renderizada direto no <body> (portal) */}
+      {menuOpen &&
+        createPortal(
+          <div className="fixed inset-0 z-[100] lg:hidden">
+            <div
+              className="absolute inset-0 bg-[#101a15]/45 backdrop-blur-[2px]"
+              onClick={() => setMenuOpen(false)}
+              aria-hidden="true"
+            />
+            <aside
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menu principal"
+              className="absolute inset-y-0 left-0 flex w-[260px] max-w-[85vw] flex-col border-r border-[#e3e7e2] bg-[#fbfcfa] px-[18px] pb-5 pt-7 shadow-2xl"
+            >
+              <SidebarContent onClose={() => setMenuOpen(false)} />
+            </aside>
+          </div>,
+          document.body
+        )}
+    </>
   );
 }

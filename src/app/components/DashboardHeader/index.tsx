@@ -1,12 +1,18 @@
-import Icon, { type IconName } from "../Icon"
+"use client";
+
+import Icon from "../Icon";
+import { useControler } from "../../providers/HeaderControler";
 
 export default function DashboardHeader() {
+  const { toggleMenu } = useControler();
+
   return (
     <header className="flex h-[72px] items-center justify-between gap-3 border-b border-[#e0e5e0] bg-white/85 px-4 backdrop-blur-xl sm:px-6 lg:px-[34px]">
       <button
         className="grid size-10 place-items-center rounded-[10px] border border-[#e0e4e0] bg-white lg:hidden"
         type="button"
         aria-label="Abrir menu"
+        onClick={toggleMenu}
       >
         <Icon name="menu" className="size-[18px]" />
       </button>
@@ -39,7 +45,6 @@ export default function DashboardHeader() {
           <Icon name="settings" className="size-4" />
           <span className="hidden sm:inline">Opções</span>
         </button>
-        
       </div>
     </header>
   );

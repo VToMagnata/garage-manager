@@ -1,4 +1,3 @@
-// app/providers/Controler.tsx
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
@@ -7,20 +6,30 @@ type ControlerContextType = {
   name: string;
   setName: (name: string) => void;
   ShowValue: () => string;
+  menuOpen: boolean;
+  setMenuOpen: (open: boolean) => void;
+  toggleMenu: () => void;
 };
 
 const ControlerContext = createContext<ControlerContextType | null>(null);
 
 export function ControlerProvider({ children }: { children: ReactNode }) {
-  const [name, setName] = useState("Home");
+  const [name, setNameState] = useState("Home");
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const ShowValue = () => {
-    return name;
+  // Ao trocar de tela, fecha o menu mobile automaticamente
+  const setName = (novo: string) => {
+    setNameState(novo);
+    setMenuOpen(false);
   };
-  
+
+  const ShowValue = () => name;
+  const toggleMenu = () => setMenuOpen((atual) => !atual);
 
   return (
-    <ControlerContext.Provider value={{ name, setName, ShowValue }}>
+    <ControlerContext.Provider
+      value={{ name, setName, ShowValue, menuOpen, setMenuOpen, toggleMenu }}
+    >
       {children}
     </ControlerContext.Provider>
   );
