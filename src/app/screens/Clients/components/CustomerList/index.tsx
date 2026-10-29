@@ -1,7 +1,7 @@
 "use client";
 
 import Icon from "@/app/components/Icon";
-import { useClient } from "@/app/providers/Clients";
+import { useADM_PROPS } from "@/app/store/ADM";
 import { useState } from "react";
 import ModalEditClient from "../ModalEdit";
 
@@ -15,7 +15,8 @@ function getInitials(name: string) {
 }
 
 export default function CustomerList() {
-  const { ArrayClients: customers, deleteClient } = useClient();
+  const customers = useADM_PROPS((s) => s.ArrayClients);
+  const deleteClient = useADM_PROPS((s) => s.deleteClient);
   const [editingId, setEditingId] = useState<string | null>(null);
 
   const editingClient = customers.find((c) => c.id === editingId);

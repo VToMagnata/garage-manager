@@ -1,7 +1,7 @@
 "use client";
 
 import Icon, { type IconName } from "../../../../components/Icon"
-import { useVagancie } from "@/app/providers/Vagancie";
+import { useADM_PROPS } from "@/app/store/ADM";
 import StatCard from "./SubComponents/StatCard";
 
 type Stat = {
@@ -14,7 +14,8 @@ type Stat = {
 
 
 export default function StatsGrid() {
-  const { total, occupied } = useVagancie();
+  const total = useADM_PROPS((s) => s.total);
+  const occupied = useADM_PROPS((s) => s.occupied);
 
   const percent = total > 0 ? (occupied / total) * 100 : 0;
 

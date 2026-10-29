@@ -5,10 +5,10 @@ import CustomerList from "./components/CustomerList";
 import CreateCustomerCard from "./components/CreateCustomerCard";
 import DashboardHeader from "../../components/DashboardHeader";
 import Sidebar from "../../components/Sidebar";
-import { useClient } from "@/app/providers/Clients";
+import { useADM_PROPS } from "@/app/store/ADM";
 
 export default function ClientsPage() {
-  const { ArrayClients } = useClient();
+  const ArrayClients = useADM_PROPS((s) => s.ArrayClients)
 
   const stats = [
     {

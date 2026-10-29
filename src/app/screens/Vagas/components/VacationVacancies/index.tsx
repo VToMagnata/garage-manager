@@ -1,9 +1,12 @@
+"use client";
+
 import Icon from "@/app/components/Icon";
-import { useVagancie } from "@/app/providers/Vagancie";
+import { useADM_PROPS } from "@/app/store/ADM";
+import { useMemo } from "react";
 
 export default function VacationVacancies() {
-
-  const vacations = useVagancie().ArrayVacancies.filter((v) => v.ferias.is);
+  const vagas = useADM_PROPS((s) => s.ArrayVagacie);
+  const vacations = useMemo(() => vagas.filter((v) => v.ferias.is), [vagas]);
 
   return (
     <section className="overflow-hidden rounded-[17px] border border-[#e0e5e0] bg-white shadow-sm shadow-emerald-950/5">

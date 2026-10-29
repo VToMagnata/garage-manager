@@ -5,7 +5,7 @@ import HomePage from "./screens/Home";
 import VagasPage from "./screens/Vagas";
 import RelatoriosPage from "./screens/Relatorios";
 import ClientsPage from "./screens/Clients";
-import { useControler } from "./providers/HeaderControler";
+import { useControler } from "./provider/HeaderControler";
 
 const screens: Record<string, ReactNode> = {
   Home: <HomePage />,

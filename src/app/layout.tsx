@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { VagancieProvider } from "./providers/Vagancie";
-import { ControlerProvider } from "./providers/HeaderControler";
-import { ClientProvider } from "./providers/Clients";
+import { ControlerProvider } from "./provider/HeaderControler";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,13 +13,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
     >
       <body className="min-h-full flex flex-col">
-        <ClientProvider>
+
         <ControlerProvider>
-        <VagancieProvider>
           {children}
-          </VagancieProvider>
         </ControlerProvider>
-        </ClientProvider>
       </body>
     </html>
   );

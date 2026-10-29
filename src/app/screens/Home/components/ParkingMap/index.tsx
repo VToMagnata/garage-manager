@@ -1,8 +1,8 @@
 "use client";
 
 import Icon from "../../../../components/Icon";
-import { useVagancie } from "@/app/providers/Vagancie";
 import { useState } from "react";
+import { useADM_PROPS } from "@/app/store/ADM";
 
 type Filter = "all" | "free" | "busy" | "reserved";
 
@@ -21,7 +21,7 @@ const filters: { label: string; value: Filter }[] = [
 
 export default function ParkingMap() {
   const [filter, setFilter] = useState<Filter>("all");
-  const { ArrayVacancies } = useVagancie();
+  const ArrayVacancies = useADM_PROPS((s) => s.ArrayVagacie)
 
   const spots = ArrayVacancies.map((spot) => {
     const tone = spot.busy ? "busy" : spot.ferias.is ? "reserved" : "free";

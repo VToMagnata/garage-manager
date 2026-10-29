@@ -1,8 +1,7 @@
 "use client";
 
 import Icon from "@/app/components/Icon";
-import { useClient, type Client } from "@/app/providers/Clients";
-import { useVagancie } from "@/app/providers/Vagancie";
+import { useADM_PROPS, type Client } from "@/app/store/ADM";
 import { useEffect, useState } from "react";
 
 type FormData = {
@@ -26,8 +25,7 @@ export default function ModalEditClient({
   client: Client;
   onClose: () => void;
 }) {
-  const { updateClient } = useClient();
-  const { ArrayVacancies, setNewData } = useVagancie();
+  const updateClient = useADM_PROPS((s) => s.updateClient);
 
   // Já começa preenchido com os dados atuais do cliente
   const [data, setData] = useState<FormData>({
@@ -68,14 +66,8 @@ export default function ModalEditClient({
       },
     };
 
+    // Atualiza a lista de clientes E a cópia dentro da vaga, tudo de uma vez
     updateClient(client.id, updatedClient);
-
-    // Mantém sincronizadas as vagas que guardam uma cópia deste cliente
-    ArrayVacancies.forEach((v) => {
-      if (v.client?.id === client.id) {
-        setNewData(v.number, { client: updatedClient });
-      }
-    });
 
     onClose();
   }

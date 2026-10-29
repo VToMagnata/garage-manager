@@ -1,7 +1,7 @@
 "use client";
 
 import Icon from "../Icon";
-import { useControler } from "../../providers/HeaderControler";
+import { useControler } from "../../provider/HeaderControler";
 
 export default function DashboardHeader() {
   const { toggleMenu } = useControler();

@@ -4,11 +4,11 @@ import Icon from "@/app/components/Icon";
 import Sidebar from "../../components/Sidebar";
 import VacancyList from "./components/VacancyList";
 import VacationVacancies from "./components/VacationVacancies";
-import { useVagancie } from "@/app/providers/Vagancie";
+import { useADM_PROPS } from "@/app/store/ADM";
 
 export default function App() {
 
-  const { ArrayVacancies } = useVagancie();
+  const ArrayVacancies = useADM_PROPS((s) => s.ArrayVagacie)
 
   const total = ArrayVacancies.length;
   const ocupadas = ArrayVacancies.filter((v) => v.busy).length;

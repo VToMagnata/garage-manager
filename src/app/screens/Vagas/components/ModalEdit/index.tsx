@@ -1,9 +1,8 @@
 "use client";
 
 import Icon from "@/app/components/Icon";
-import { useClient } from "@/app/providers/Clients";
 import { useState } from "react";
-import { useVagancie } from "@/app/providers/Vagancie";
+import { useADM_PROPS } from "@/app/store/ADM";
 
 type Data = {
   number: string;
@@ -21,8 +20,11 @@ export default function ModalEdit({
   number: string;
   onClose: () => void;
 }) {
-  const { setNewData, ArrayVacancies } = useVagancie();
-  const { ArrayClients } = useClient();
+
+
+  const ArrayVacancies = useADM_PROPS((s) => s.ArrayVagacie)
+  const setNewData = useADM_PROPS((s) => s.setNewData)
+  const ArrayClients = useADM_PROPS((s) => s.ArrayClients)
 
   const vacancy = ArrayVacancies.find((v) => v.number === number);
 

@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Vagancie {
+  number       String @id
+  busy         Boolean @default(false)
+  pago         Boolean @default(false)
+  value        Float
+  feriasIs     Boolean @default(false)
+  feriasExit   String?
+  feriasReturn String?
+  client       Client?
+}
+
+model Client {
+  id         String    @id @default(uuid())
+  name       String
+  email      String    @unique
+  cpf        String    @unique
+  telefone   String
+  modelo     String
+  placa      String
+  vaga       Vagancie? @relation(fields: [vagaNumber], references: [number])
+  vagaNumber String?   @unique
+}

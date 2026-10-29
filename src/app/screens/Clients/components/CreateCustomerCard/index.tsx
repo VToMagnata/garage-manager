@@ -1,11 +1,11 @@
 import Icon from "@/app/components/Icon";
-import { useClient } from "@/app/providers/Clients";
 import { useState } from "react";
-import type { Client } from "@/app/providers/Clients";
+import type { Client } from "@/app/store/ADM";
+import { useADM_PROPS } from "@/app/store/ADM";
 
 export default function CreateCustomerCard() {
 
-  const { createNewClient } = useClient();
+  const createNewClient = useADM_PROPS((s) => s.createNewClient)
 
   const [data, setData] = useState<Client>({
     id: "",

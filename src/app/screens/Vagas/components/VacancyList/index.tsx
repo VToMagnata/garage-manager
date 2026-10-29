@@ -1,13 +1,14 @@
 "use client"
 
 import Icon from "@/app/components/Icon";
-import { useVagancie } from "@/app/providers/Vagancie";
 import ModalEdit from "../ModalEdit";
 import { useState } from "react";
+import { useADM_PROPS } from "@/app/store/ADM";
 
 
 export default function VacancyList() {
-  const { ArrayVacancies, setDeleteVagancie } = useVagancie();
+  const ArrayVacancies = useADM_PROPS((s) => s.ArrayVagacie)
+  const setDeleteVagancie = useADM_PROPS((s) => s.setDeleteVagancie)
 
   const [openModal, setOpenModal] = useState(false);
   const [numero, setNumero] = useState("");

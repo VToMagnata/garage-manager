@@ -1,13 +1,12 @@
 import Icon from "@/app/components/Icon";
-import { useVagancie, Vagancie } from "@/app/providers/Vagancie";
+import type { Vagancie } from "@/app/store/ADM";
 import { useState } from "react";
-import { useClient } from "@/app/providers/Clients";
-import type { Client } from "@/app/providers/Clients";
+import { useADM_PROPS } from "@/app/store/ADM";
 
 export default function CreateVacancyCard() {
 
-  const { ArrayClients } = useClient();
-  const { setNewVagancie } = useVagancie();
+  const ArrayClients = useADM_PROPS((s) => s.ArrayClients)
+  const setNewVagancie = useADM_PROPS((s) => s.setNewVagancie)
 
   const [data, setData] = useState<Vagancie>({
     number: "",

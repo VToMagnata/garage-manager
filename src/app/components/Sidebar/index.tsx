@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import Icon, { type IconName } from "../Icon";
-import { useControler } from "../../providers/HeaderControler";
+import { useControler } from "../../provider/HeaderControler";
 
 const menuItems: { label: string; name: string; icon: IconName }[] = [
   { label: "Visão geral", name: "Home", icon: "grid" },
