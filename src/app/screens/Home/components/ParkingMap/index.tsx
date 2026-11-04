@@ -24,11 +24,11 @@ export default function ParkingMap() {
   const ArrayVacancies = useADM_PROPS((s) => s.ArrayVagacie)
 
   const spots = ArrayVacancies.map((spot) => {
-    const tone = spot.busy ? "busy" : spot.ferias.is ? "reserved" : "free";
+    const tone = spot.busy ? "busy" : spot.feriasIs ? "reserved" : "free";
     return {
       number: spot.number,
       tone,
-      status: spot.busy ? "Ocupada" : spot.ferias.is ? "Férias" : "Livre",
+      status: spot.busy ? "Ocupada" : spot.feriasIs ? "Férias" : "Livre",
       plate: spot.busy ? spot.client?.carro.placa ?? null : null,
     };
   }).filter((spot) => filter === "all" || spot.tone === filter);

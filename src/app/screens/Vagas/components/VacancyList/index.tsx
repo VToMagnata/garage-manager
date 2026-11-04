@@ -68,14 +68,14 @@ export default function VacancyList() {
                 <td className="px-4 py-3.5">
 <span
   className={`inline-flex rounded-full px-2.5 py-1 text-[9px] font-bold ring-1 ${
-    v.ferias.is
+    v.feriasIs
       ? "bg-amber-50 text-amber-700 ring-amber-100"
       : v.busy
         ? "bg-rose-50 text-rose-600 ring-rose-100"
         : "bg-emerald-50 text-emerald-700 ring-emerald-100"
   }`}
 >
-  {v.ferias.is ? "Em férias" : v.busy ? "Ocupada" : "Disponível"}
+  {v.feriasIs ? "Em férias" : v.busy ? "Ocupada" : "Disponível"}
 </span>
                 </td>
                 <td className="px-4 py-3.5 font-semibold">R$ {v.value}</td>

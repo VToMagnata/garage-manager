@@ -22,10 +22,10 @@ model Client {
   id         String    @id @default(uuid())
   name       String
   email      String    @unique
-  cpf        String    @unique
-  telefone   String
-  modelo     String
-  placa      String
+  cpf        String?    @unique
+  telefone   String?
+  modelo     String?
+  placa      String?
   vaga       Vagancie? @relation(fields: [vagaNumber], references: [number])
   vagaNumber String?   @unique
 }

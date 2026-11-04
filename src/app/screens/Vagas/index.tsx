@@ -12,8 +12,8 @@ export default function App() {
 
   const total = ArrayVacancies.length;
   const ocupadas = ArrayVacancies.filter((v) => v.busy).length;
-  const ferias = ArrayVacancies.filter((v) => v.ferias.is).length;
-  const disponiveis = ArrayVacancies.filter((v) => !v.busy && !v.ferias.is).length;
+  const ferias = ArrayVacancies.filter((v) => v.feriasIs).length;
+  const disponiveis = ArrayVacancies.filter((v) => !v.busy && !v.feriasIs).length;
 
   const pct = (n: number) =>
     total === 0 ? "0%" : `${((n / total) * 100).toFixed(1).replace(".", ",")}%`;

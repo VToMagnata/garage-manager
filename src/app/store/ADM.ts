@@ -1,10 +1,7 @@
-import { create } from 'zustand';
-
-
-
+import { create } from "zustand";
+import * as db from "@/lib/actions/Fun-PRIS";
 
 // Tipagem dos objetos \\
-
 
 export type Client = {
   id: string;
@@ -22,11 +19,9 @@ export type Client = {
 export type Vagancie = {
   number: string;
   busy: boolean;
-  ferias: {
-    exit: string;
-    returnDate: string;
-    is: boolean;
-  };
+  feriasIs: boolean;
+  feriasExit: string;
+  feriasReturn: string;
   client?: Client;
   pago: boolean;
   value: number;
@@ -34,21 +29,22 @@ export type Vagancie = {
 
 // -------------------------------------------------------------------------- \\
 
+type Result = { ok: true } | { ok: false; erro: string };
 
 type ADM_propsStore = {
   ArrayVagacie: Vagancie[];
   ArrayClients: Client[];
   total: number;
   occupied: number;
+  hydrate: (vagas: Vagancie[], clients: Client[]) => void;
+  setClient: (number: string, client: Client) => Promise<Result>;
+  setNewVagancie: (valor: Vagancie) => Promise<Result>;
+  setDeleteVagancie: (number: string) => Promise<Result>;
+  setNewData: (number: string, changes: Partial<Vagancie>) => Promise<Result>;
 
-  setClient: (number: string, client: Client) => void;
-  setNewVagancie: (valor: Vagancie) => void;
-  setDeleteVagancie: (number: string) => void;
-  setNewData: (number: string, changes: Partial<Vagancie>) => void;
-
-  createNewClient: (valor: Client) => void;
-  deleteClient: (id: string) => void;
-  updateClient: (id: string, valor: Client) => void;
+  createNewClient: (valor: Client) => Promise<Result>;
+  deleteClient: (id: string) => Promise<Result>;
+  updateClient: (id: string, valor: Client) => Promise<Result>;
 };
 
 // recalcula total e ocupadas sempre que o array de vagas muda
@@ -57,14 +53,25 @@ const stats = (vagas: Vagancie[]) => ({
   occupied: vagas.filter((v) => v.busy).length,
 });
 
+const ok: Result = { ok: true };
+const falhou = (erro: string): Result => ({ ok: false, erro });
+
 export const useADM_PROPS = create<ADM_propsStore>((set) => ({
   ArrayVagacie: [],
   ArrayClients: [],
   total: 0,
   occupied: 0,
+  hydrate: (vagas, clients) =>
+    set({ ArrayVagacie: vagas, ArrayClients: clients, ...stats(vagas) }),
 
   // vincula um cliente a uma vaga
-  setClient: (number, client) =>
+  setClient: async (number, client) => {
+    try {
+      await db.setClient(number, client.id);
+    } catch {
+      return falhou("Não foi possível vincular o cliente à vaga.");
+    }
+
     set((state) => {
       const vagas = state.ArrayVagacie.map((v) =>
         v.number === number
@@ -75,17 +82,34 @@ export const useADM_PROPS = create<ADM_propsStore>((set) => ({
         c.id === client.id ? { ...c, vagaAssociada: number } : c
       );
       return { ArrayVagacie: vagas, ArrayClients: clients, ...stats(vagas) };
-    }),
+    });
+    return ok;
+  },
 
-  setNewVagancie: (valor) =>
+  setNewVagancie: async (valor) => {
+    let criada: Vagancie | null;
+    try {
+      criada = await db.setNewVagancie(valor);
+    } catch {
+      return falhou("Não foi possível criar a vaga.");
+    }
+    if (!criada) return falhou("Já existe uma vaga com esse número.");
+
+    const nova = criada;
     set((state) => {
-      // evita número de vaga duplicado
-      if (state.ArrayVagacie.some((v) => v.number === valor.number)) return state;
-      const vagas = [...state.ArrayVagacie, valor];
+      const vagas = [...state.ArrayVagacie, nova];
       return { ArrayVagacie: vagas, ...stats(vagas) };
-    }),
+    });
+    return ok;
+  },
 
-  setDeleteVagancie: (number) =>
+  setDeleteVagancie: async (number) => {
+    try {
+      await db.setDeleteVagancie(number);
+    } catch {
+      return falhou("Não foi possível apagar a vaga.");
+    }
+
     set((state) => {
       const vagas = state.ArrayVagacie.filter((v) => v.number !== number);
       // limpa a vaga associada nos clientes que estavam nela
@@ -93,27 +117,43 @@ export const useADM_PROPS = create<ADM_propsStore>((set) => ({
         c.vagaAssociada === number ? { ...c, vagaAssociada: "" } : c
       );
       return { ArrayVagacie: vagas, ArrayClients: clients, ...stats(vagas) };
-    }),
+    });
+    return ok;
+  },
 
-  setNewData: (number, changes) =>
+  setNewData: async (number, changes) => {
+    try {
+      await db.setNewData(number, changes);
+    } catch {
+      return falhou("Não foi possível atualizar a vaga.");
+    }
+
     set((state) => {
       const vagas = state.ArrayVagacie.map((v) =>
-        v.number === number
-          ? {
-              ...v,
-              ...changes,
-              // mescla o objeto ferias em vez de substituir tudo
-              ferias: { ...v.ferias, ...changes.ferias },
-            }
-          : v
+        v.number === number ? { ...v, ...changes } : v
       );
       return { ArrayVagacie: vagas, ...stats(vagas) };
-    }),
+    });
+    return ok;
+  },
 
-  createNewClient: (valor) =>
-    set((state) => ({ ArrayClients: [...state.ArrayClients, valor] })),
+  createNewClient: async (valor) => {
+    const res = await db.createNewClient(valor);
+    if (!res.ok) return falhou(res.erro);
 
-  deleteClient: (id) =>
+    // o id verdadeiro vem do banco
+    const novo: Client = { ...valor, id: res.id, vagaAssociada: "" };
+    set((state) => ({ ArrayClients: [...state.ArrayClients, novo] }));
+    return ok;
+  },
+
+  deleteClient: async (id) => {
+    try {
+      await db.deleteClient(id);
+    } catch {
+      return falhou("Não foi possível apagar o cliente.");
+    }
+
     set((state) => {
       const vagas = state.ArrayVagacie.map((v) =>
         v.client?.id === id ? { ...v, busy: false, client: undefined } : v
@@ -123,14 +163,24 @@ export const useADM_PROPS = create<ADM_propsStore>((set) => ({
         ArrayVagacie: vagas,
         ...stats(vagas),
       };
-    }),
+    });
+    return ok;
+  },
 
-  updateClient: (id, valor) =>
+  updateClient: async (id, valor) => {
+    try {
+      await db.updateClient(id, valor);
+    } catch {
+      return falhou("Não foi possível atualizar o cliente.");
+    }
+
     set((state) => ({
       ArrayClients: state.ArrayClients.map((c) => (c.id === id ? valor : c)),
       // mantém o cliente "espelhado" dentro da vaga também
       ArrayVagacie: state.ArrayVagacie.map((v) =>
         v.client?.id === id ? { ...v, client: valor } : v
       ),
-    })),
+    }));
+    return ok;
+  },
 }));

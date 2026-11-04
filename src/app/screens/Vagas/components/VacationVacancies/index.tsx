@@ -6,7 +6,7 @@ import { useMemo } from "react";
 
 export default function VacationVacancies() {
   const vagas = useADM_PROPS((s) => s.ArrayVagacie);
-  const vacations = useMemo(() => vagas.filter((v) => v.ferias.is), [vagas]);
+  const vacations = useMemo(() => vagas.filter((v) => v.feriasIs), [vagas]);
 
   return (
     <section className="overflow-hidden rounded-[17px] border border-[#e0e5e0] bg-white shadow-sm shadow-emerald-950/5">
@@ -54,12 +54,12 @@ export default function VacationVacancies() {
             <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-2">
               <div>
                 <span className="block text-[8px] font-bold uppercase tracking-wide text-[#9b9f9c]">Saída</span>
-                <strong className="mt-1 block text-[10px]">{vacation.ferias.exit}</strong>
+                <strong className="mt-1 block text-[10px]">{vacation.feriasExit}</strong>
               </div>
               <Icon name="arrow" className="size-3.5 text-amber-400" />
               <div className="text-right">
                 <span className="block text-[8px] font-bold uppercase tracking-wide text-[#9b9f9c]">Volta</span>
-                <strong className="mt-1 block text-[10px]">{vacation.ferias. returnDate}</strong>
+                <strong className="mt-1 block text-[10px]">{vacation.feriasReturn}</strong>
               </div>
             </div>
           </article>

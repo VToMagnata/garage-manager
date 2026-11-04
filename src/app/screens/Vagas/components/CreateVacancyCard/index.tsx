@@ -12,11 +12,9 @@ export default function CreateVacancyCard() {
     number: "",
     client: undefined,
     busy: false,
-    ferias: {
-      is: false,
-      exit: "",
-      returnDate: ""
-    },
+    feriasIs: false,
+    feriasExit: "",
+    feriasReturn: "",
     pago: false,
     value: 0,
   });

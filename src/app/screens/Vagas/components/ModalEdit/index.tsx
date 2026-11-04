@@ -32,9 +32,9 @@ export default function ModalEdit({
     number: vacancy?.number ?? number,
     value: String(vacancy?.value ?? 0),
     client: vacancy?.client?.id?.toString() ?? "",
-    ferias: vacancy?.ferias.is ?? false,
-    exit: vacancy?.ferias.exit ?? "",
-    returnDate: vacancy?.ferias.returnDate ?? "",
+    ferias: vacancy?.feriasIs ?? false,
+    exit: vacancy?.feriasExit ?? "",
+    returnDate: vacancy?.feriasReturn ?? "",
   });
 
   function handleSave() {
@@ -46,12 +46,10 @@ export default function ModalEdit({
       number: data.number,
       value: Number(data.value.replace(",", ".")),
       client,
-      busy: !!client,
-      ferias: {
-        exit: data.ferias ? data.exit : "",
-        returnDate: data.ferias ? data.returnDate : "",
-        is: data.ferias,
-      },
+      busy: !! client,
+        feriasExit: data.ferias ? data.exit : "",
+        feriasReturn: data.ferias ? data.returnDate : "",
+        feriasIs: data.ferias,
     });
 
     onClose();

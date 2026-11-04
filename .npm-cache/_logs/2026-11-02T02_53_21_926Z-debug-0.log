@@ -1,0 +1,265 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.19.0
+2 info using node@v24.21.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\trome\OneDrive\Desktop\Projetos\garagem\.npmrc
+5 silly config load:file:C:\Users\trome\.npmrc
+6 silly config load:file:C:\Users\trome\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install next@16.4.3 eslint-config-next@16.4.3
+8 verbose argv "install" "next@16.4.3" "eslint-config-next@16.4.3" "--cache" ".npm-cache" "--no-audit" "--no-fund"
+9 verbose logfile logs-max:10 dir:C:\Users\trome\OneDrive\Desktop\Projetos\garagem\.npm-cache\_logs\2026-11-02T02_53_21_926Z-
+10 verbose logfile C:\Users\trome\OneDrive\Desktop\Projetos\garagem\.npm-cache\_logs\2026-11-02T02_53_21_926Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+13 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+14 silly idealTree buildDeps
+15 silly fetch manifest next@16.4.3
+16 silly packumentCache full:https://registry.npmjs.org/next cache-miss
+17 http fetch GET 200 https://registry.npmjs.org/npm 1139ms
+18 http fetch GET 200 https://registry.npmjs.org/next 1749ms (cache miss)
+19 silly packumentCache full:https://registry.npmjs.org/next set size:undefined disposed:false
+20 silly fetch manifest @opentelemetry/api@^1.1.0
+21 silly packumentCache full:https://registry.npmjs.org/@opentelemetry%2fapi cache-miss
+22 http fetch GET 200 https://registry.npmjs.org/@opentelemetry%2fapi 308ms (cache miss)
+23 silly packumentCache full:https://registry.npmjs.org/@opentelemetry%2fapi set size:undefined disposed:false
+24 silly fetch manifest @playwright/test@^1.51.1
+25 silly packumentCache full:https://registry.npmjs.org/@playwright%2ftest cache-miss
+26 http fetch GET 200 https://registry.npmjs.org/@playwright%2ftest 562ms (cache miss)
+27 silly packumentCache full:https://registry.npmjs.org/@playwright%2ftest set size:undefined disposed:false
+28 silly fetch manifest babel-plugin-react-compiler@*
+29 silly packumentCache full:https://registry.npmjs.org/babel-plugin-react-compiler cache-miss
+30 http fetch GET 200 https://registry.npmjs.org/babel-plugin-react-compiler 216ms (cache miss)
+31 silly packumentCache full:https://registry.npmjs.org/babel-plugin-react-compiler set size:undefined disposed:false
+32 silly fetch manifest react@19.3.0
+33 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+34 http fetch GET 200 https://registry.npmjs.org/react 538ms (cache miss)
+35 silly packumentCache full:https://registry.npmjs.org/react set size:undefined disposed:false
+36 silly fetch manifest react-dom@19.3.0
+37 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+38 http fetch GET 200 https://registry.npmjs.org/react-dom 720ms (cache miss)
+39 silly packumentCache full:https://registry.npmjs.org/react-dom set size:undefined disposed:false
+40 silly fetch manifest sass@^1.3.0
+41 silly packumentCache full:https://registry.npmjs.org/sass cache-miss
+42 http fetch GET 200 https://registry.npmjs.org/sass 208ms (cache miss)
+43 silly packumentCache full:https://registry.npmjs.org/sass set size:undefined disposed:false
+44 silly fetch manifest eslint-config-next@16.4.3
+45 silly packumentCache full:https://registry.npmjs.org/eslint-config-next cache-miss
+46 http fetch GET 200 https://registry.npmjs.org/eslint-config-next 641ms (cache miss)
+47 silly packumentCache full:https://registry.npmjs.org/eslint-config-next set size:undefined disposed:false
+48 silly fetch manifest eslint@^9
+49 silly packumentCache full:https://registry.npmjs.org/eslint cache-miss
+50 http fetch GET 200 https://registry.npmjs.org/eslint 343ms (cache miss)
+51 silly packumentCache full:https://registry.npmjs.org/eslint set size:undefined disposed:false
+52 silly fetch manifest jiti@*
+53 silly packumentCache full:https://registry.npmjs.org/jiti cache-miss
+54 http fetch GET 200 https://registry.npmjs.org/jiti 233ms (cache miss)
+55 silly packumentCache full:https://registry.npmjs.org/jiti set size:undefined disposed:false
+56 silly fetch manifest typescript@^5
+57 silly packumentCache full:https://registry.npmjs.org/typescript cache-miss
+58 http fetch GET 200 https://registry.npmjs.org/typescript 4550ms (cache miss)
+59 silly packumentCache full:https://registry.npmjs.org/typescript set size:undefined disposed:false
+60 silly placeDep ROOT eslint-config-next@16.4.3 REPLACE for: garagem@0.1.0 want: 16.4.3
+61 silly placeDep ROOT next@16.4.3 REPLACE for: garagem@0.1.0 want: 16.4.3
+62 silly fetch manifest @next/eslint-plugin-next@16.4.3
+63 silly packumentCache full:https://registry.npmjs.org/@next%2feslint-plugin-next cache-miss
+64 silly fetch manifest @next/env@16.4.3
+65 silly packumentCache full:https://registry.npmjs.org/@next%2fenv cache-miss
+66 silly fetch manifest @next/swc-darwin-x64@16.4.3
+67 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-x64 cache-miss
+68 silly fetch manifest @next/swc-darwin-arm64@16.4.3
+69 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-arm64 cache-miss
+70 silly fetch manifest @next/swc-linux-x64-gnu@16.4.3
+71 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-gnu cache-miss
+72 silly fetch manifest @next/swc-linux-x64-musl@16.4.3
+73 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-musl cache-miss
+74 silly fetch manifest @next/swc-win32-x64-msvc@16.4.3
+75 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-x64-msvc cache-miss
+76 silly fetch manifest @next/swc-linux-arm64-gnu@16.4.3
+77 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-gnu cache-miss
+78 silly fetch manifest @next/swc-linux-arm64-musl@16.4.3
+79 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-musl cache-miss
+80 silly fetch manifest @next/swc-win32-arm64-msvc@16.4.3
+81 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-arm64-msvc cache-miss
+82 http fetch GET 200 https://registry.npmjs.org/@next%2feslint-plugin-next 1470ms (cache miss)
+83 silly packumentCache full:https://registry.npmjs.org/@next%2feslint-plugin-next set size:undefined disposed:false
+84 http fetch GET 200 https://registry.npmjs.org/@next%2fenv 1768ms (cache miss)
+85 silly packumentCache full:https://registry.npmjs.org/@next%2fenv set size:undefined disposed:false
+86 http fetch GET 200 https://registry.npmjs.org/@next%2fswc-darwin-arm64 2185ms (cache miss)
+87 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-arm64 set size:undefined disposed:false
+88 http fetch GET 200 https://registry.npmjs.org/@next%2fswc-linux-x64-musl 2286ms (cache miss)
+89 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-musl set size:undefined disposed:false
+90 http fetch GET 200 https://registry.npmjs.org/@next%2fswc-linux-arm64-gnu 2415ms (cache miss)
+91 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-gnu set size:undefined disposed:false
+92 http fetch GET 200 https://registry.npmjs.org/@next%2fswc-darwin-x64 2722ms (cache miss)
+93 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-x64 set size:undefined disposed:false
+94 http fetch GET 200 https://registry.npmjs.org/@next%2fswc-win32-x64-msvc 2921ms (cache miss)
+95 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-x64-msvc set size:undefined disposed:false
+96 http fetch GET 200 https://registry.npmjs.org/@next%2fswc-linux-x64-gnu 3215ms (cache miss)
+97 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-gnu set size:undefined disposed:false
+98 http fetch GET 200 https://registry.npmjs.org/@next%2fswc-win32-arm64-msvc 3352ms (cache miss)
+99 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-arm64-msvc set size:undefined disposed:false
+100 http fetch GET 200 https://registry.npmjs.org/@next%2fswc-linux-arm64-musl 3842ms (cache miss)
+101 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-musl set size:undefined disposed:false
+102 silly placeDep ROOT @next/eslint-plugin-next@16.4.3 OK for: eslint-config-next@16.4.3 want: 16.4.3
+103 silly fetch manifest fast-glob@3.3.1
+104 silly packumentCache full:https://registry.npmjs.org/fast-glob cache-miss
+105 silly fetch manifest @eslint-community/eslint-utils@4.9.1
+106 silly packumentCache full:https://registry.npmjs.org/@eslint-community%2feslint-utils cache-miss
+107 http fetch GET 200 https://registry.npmjs.org/fast-glob 238ms (cache miss)
+108 silly packumentCache full:https://registry.npmjs.org/fast-glob set size:undefined disposed:false
+109 http fetch GET 200 https://registry.npmjs.org/@eslint-community%2feslint-utils 274ms (cache miss)
+110 silly packumentCache full:https://registry.npmjs.org/@eslint-community%2feslint-utils set size:undefined disposed:false
+111 silly fetch manifest eslint@^6.0.0 || ^7.0.0 || >=8.0.0
+112 silly packumentCache full:https://registry.npmjs.org/eslint cache-miss
+113 http cache https://registry.npmjs.org/eslint 135ms (cache hit)
+114 silly packumentCache full:https://registry.npmjs.org/eslint set size:2107566 disposed:false
+115 silly placeDep node_modules/@next/eslint-plugin-next @eslint-community/eslint-utils@4.9.1 OK for: @next/eslint-plugin-next@16.4.3 want: 4.9.1
+116 silly placeDep ROOT fast-glob@3.3.1 OK for: @next/eslint-plugin-next@16.4.3 want: 3.3.1
+117 silly fetch manifest eslint-visitor-keys@^3.4.3
+118 silly packumentCache full:https://registry.npmjs.org/eslint-visitor-keys cache-miss
+119 silly fetch manifest merge2@^1.3.0
+120 silly packumentCache full:https://registry.npmjs.org/merge2 cache-miss
+121 silly fetch manifest micromatch@^4.0.4
+122 silly packumentCache full:https://registry.npmjs.org/micromatch cache-miss
+123 silly fetch manifest glob-parent@^5.1.2
+124 silly packumentCache full:https://registry.npmjs.org/glob-parent cache-miss
+125 silly fetch manifest @nodelib/fs.stat@^2.0.2
+126 silly packumentCache full:https://registry.npmjs.org/@nodelib%2ffs.stat cache-miss
+127 silly fetch manifest @nodelib/fs.walk@^1.2.3
+128 silly packumentCache full:https://registry.npmjs.org/@nodelib%2ffs.walk cache-miss
+129 http fetch GET 200 https://registry.npmjs.org/eslint-visitor-keys 230ms (cache miss)
+130 silly packumentCache full:https://registry.npmjs.org/eslint-visitor-keys set size:undefined disposed:false
+131 http fetch GET 200 https://registry.npmjs.org/glob-parent 311ms (cache miss)
+132 silly packumentCache full:https://registry.npmjs.org/glob-parent set size:undefined disposed:false
+133 http fetch GET 200 https://registry.npmjs.org/@nodelib%2ffs.stat 310ms (cache miss)
+134 silly packumentCache full:https://registry.npmjs.org/@nodelib%2ffs.stat set size:undefined disposed:false
+135 http fetch GET 200 https://registry.npmjs.org/merge2 324ms (cache miss)
+136 silly packumentCache full:https://registry.npmjs.org/merge2 set size:undefined disposed:false
+137 http fetch GET 200 https://registry.npmjs.org/@nodelib%2ffs.walk 327ms (cache miss)
+138 silly packumentCache full:https://registry.npmjs.org/@nodelib%2ffs.walk set size:undefined disposed:false
+139 http fetch GET 200 https://registry.npmjs.org/micromatch 356ms (cache miss)
+140 silly packumentCache full:https://registry.npmjs.org/micromatch set size:undefined disposed:false
+141 silly placeDep ROOT @nodelib/fs.stat@2.0.5 OK for: fast-glob@3.3.1 want: ^2.0.2
+142 silly placeDep ROOT @nodelib/fs.walk@1.2.8 OK for: fast-glob@3.3.1 want: ^1.2.3
+143 silly placeDep node_modules/fast-glob glob-parent@5.1.2 OK for: fast-glob@3.3.1 want: ^5.1.2
+144 silly placeDep ROOT merge2@1.4.1 OK for: fast-glob@3.3.1 want: ^1.3.0
+145 silly placeDep ROOT micromatch@4.0.8 OK for: fast-glob@3.3.1 want: ^4.0.4
+146 silly fetch manifest fastq@^1.6.0
+147 silly packumentCache full:https://registry.npmjs.org/fastq cache-miss
+148 silly fetch manifest @nodelib/fs.scandir@2.1.5
+149 silly packumentCache full:https://registry.npmjs.org/@nodelib%2ffs.scandir cache-miss
+150 silly fetch manifest braces@^3.0.3
+151 silly packumentCache full:https://registry.npmjs.org/braces cache-miss
+152 silly fetch manifest picomatch@^2.3.1
+153 silly packumentCache full:https://registry.npmjs.org/picomatch cache-miss
+154 http fetch GET 200 https://registry.npmjs.org/fastq 356ms (cache miss)
+155 silly packumentCache full:https://registry.npmjs.org/fastq set size:undefined disposed:false
+156 http fetch GET 200 https://registry.npmjs.org/picomatch 366ms (cache miss)
+157 silly packumentCache full:https://registry.npmjs.org/picomatch set size:undefined disposed:false
+158 http fetch GET 200 https://registry.npmjs.org/braces 383ms (cache miss)
+159 silly packumentCache full:https://registry.npmjs.org/braces set size:undefined disposed:false
+160 http fetch GET 200 https://registry.npmjs.org/@nodelib%2ffs.scandir 680ms (cache miss)
+161 silly packumentCache full:https://registry.npmjs.org/@nodelib%2ffs.scandir set size:undefined disposed:false
+162 silly placeDep ROOT @nodelib/fs.scandir@2.1.5 OK for: @nodelib/fs.walk@1.2.8 want: 2.1.5
+163 silly placeDep ROOT fastq@1.20.3 OK for: @nodelib/fs.walk@1.2.8 want: ^1.6.0
+164 silly fetch manifest run-parallel@^1.1.9
+165 silly packumentCache full:https://registry.npmjs.org/run-parallel cache-miss
+166 silly fetch manifest reusify@^1.0.4
+167 silly packumentCache full:https://registry.npmjs.org/reusify cache-miss
+168 http fetch GET 200 https://registry.npmjs.org/reusify 171ms (cache miss)
+169 silly packumentCache full:https://registry.npmjs.org/reusify set size:undefined disposed:false
+170 http fetch GET 200 https://registry.npmjs.org/run-parallel 173ms (cache miss)
+171 silly packumentCache full:https://registry.npmjs.org/run-parallel set size:undefined disposed:false
+172 silly placeDep ROOT run-parallel@1.2.0 OK for: @nodelib/fs.scandir@2.1.5 want: ^1.1.9
+173 silly fetch manifest queue-microtask@^1.2.2
+174 silly packumentCache full:https://registry.npmjs.org/queue-microtask cache-miss
+175 http fetch GET 200 https://registry.npmjs.org/queue-microtask 162ms (cache miss)
+176 silly packumentCache full:https://registry.npmjs.org/queue-microtask set size:undefined disposed:false
+177 silly placeDep ROOT reusify@1.1.0 OK for: fastq@1.20.3 want: ^1.0.4
+178 silly placeDep ROOT braces@3.0.3 OK for: micromatch@4.0.8 want: ^3.0.3
+179 silly placeDep ROOT picomatch@2.3.2 OK for: micromatch@4.0.8 want: ^2.3.1
+180 silly fetch manifest fill-range@^7.1.1
+181 silly packumentCache full:https://registry.npmjs.org/fill-range cache-miss
+182 http fetch GET 200 https://registry.npmjs.org/fill-range 177ms (cache miss)
+183 silly packumentCache full:https://registry.npmjs.org/fill-range set size:undefined disposed:false
+184 silly placeDep ROOT fill-range@7.1.1 OK for: braces@3.0.3 want: ^7.1.1
+185 silly fetch manifest to-regex-range@^5.0.1
+186 silly packumentCache full:https://registry.npmjs.org/to-regex-range cache-miss
+187 http fetch GET 200 https://registry.npmjs.org/to-regex-range 186ms (cache miss)
+188 silly packumentCache full:https://registry.npmjs.org/to-regex-range set size:undefined disposed:false
+189 silly placeDep ROOT to-regex-range@5.0.1 OK for: fill-range@7.1.1 want: ^5.0.1
+190 silly fetch manifest is-number@^7.0.0
+191 silly packumentCache full:https://registry.npmjs.org/is-number cache-miss
+192 http fetch GET 200 https://registry.npmjs.org/is-number 151ms (cache miss)
+193 silly packumentCache full:https://registry.npmjs.org/is-number set size:undefined disposed:false
+194 silly placeDep ROOT @next/env@16.4.3 OK for: next@16.4.3 want: 16.4.3
+195 silly placeDep ROOT @next/swc-darwin-arm64@16.4.3 OK for: next@16.4.3 want: 16.4.3
+196 silly placeDep ROOT @next/swc-darwin-x64@16.4.3 OK for: next@16.4.3 want: 16.4.3
+197 silly placeDep ROOT @next/swc-linux-arm64-gnu@16.4.3 OK for: next@16.4.3 want: 16.4.3
+198 silly placeDep ROOT @next/swc-linux-arm64-musl@16.4.3 OK for: next@16.4.3 want: 16.4.3
+199 silly placeDep ROOT @next/swc-linux-x64-gnu@16.4.3 OK for: next@16.4.3 want: 16.4.3
+200 silly placeDep ROOT @next/swc-linux-x64-musl@16.4.3 OK for: next@16.4.3 want: 16.4.3
+201 silly placeDep ROOT @next/swc-win32-arm64-msvc@16.4.3 OK for: next@16.4.3 want: 16.4.3
+202 silly placeDep ROOT @next/swc-win32-x64-msvc@16.4.3 OK for: next@16.4.3 want: 16.4.3
+203 silly placeDep ROOT queue-microtask@1.2.3 OK for: run-parallel@1.2.0 want: ^1.2.2
+204 silly placeDep ROOT is-number@7.0.0 OK for: to-regex-range@5.0.1 want: ^7.0.0
+205 silly placeDep node_modules/@next/eslint-plugin-next eslint-visitor-keys@3.4.3 OK for: @eslint-community/eslint-utils@4.9.1 want: ^3.4.3
+206 silly reify mark retired [
+206 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\eslint-config-next'
+206 silly reify ]
+207 silly reify mark retired [
+207 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\next',
+207 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\.bin\\next',
+207 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\.bin\\next.cmd',
+207 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\.bin\\next.ps1'
+207 silly reify ]
+208 silly reify mark retired [
+208 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\@next\\eslint-plugin-next'
+208 silly reify ]
+209 silly reify mark retired [
+209 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\@next\\swc-win32-x64-msvc'
+209 silly reify ]
+210 silly reify mark retired [
+210 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\@next\\env'
+210 silly reify ]
+211 silly reify moves {
+211 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\eslint-config-next': 'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\.eslint-config-next-jINw6cpQ',
+211 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\next': 'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\.next-zp09b8QT',
+211 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\.bin\\next': 'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\.bin\\.next-reXTkw8W',
+211 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\.bin\\next.cmd': 'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\.bin\\.next.cmd-O0DNlI1e',
+211 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\.bin\\next.ps1': 'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\.bin\\.next.ps1-X9mTjDp1',
+211 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\@next\\eslint-plugin-next': 'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\@next\\.eslint-plugin-next-6UKRF2Q8',
+211 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\@next\\swc-win32-x64-msvc': 'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\@next\\.swc-win32-x64-msvc-Lkvy8Z7M',
+211 silly reify   'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\@next\\env': 'C:\\Users\\trome\\OneDrive\\Desktop\\Projetos\\garagem\\node_modules\\@next\\.env-uBln8eCa'
+211 silly reify }
+212 verbose stack Error: EBUSY: resource busy or locked, copyfile 'C:\Users\trome\OneDrive\Desktop\Projetos\garagem\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node' -> 'C:\Users\trome\OneDrive\Desktop\Projetos\garagem\node_modules\@next\.swc-win32-x64-msvc-Lkvy8Z7M\next-swc.win32-x64-msvc.node'
+212 verbose stack     at async Object.copyFile (node:internal/fs/promises:1327:10)
+212 verbose stack     at async moveFile (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\fs\lib\move-file.js:42:9)
+212 verbose stack     at async Promise.all (index 0)
+212 verbose stack     at async moveFile (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\fs\lib\move-file.js:36:9)
+212 verbose stack     at async Promise.allSettled (index 6)
+212 verbose stack     at async #reifyPackages (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\reify.js:353:11)
+212 verbose stack     at async Arborist.reify (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\reify.js:139:7)
+212 verbose stack     at async Install.exec (C:\Program Files\nodejs\node_modules\npm\lib\commands\install.js:158:5)
+212 verbose stack     at async Npm.exec (C:\Program Files\nodejs\node_modules\npm\lib\npm.js:193:9)
+212 verbose stack     at async module.exports (C:\Program Files\nodejs\node_modules\npm\lib\cli\entry.js:67:5)
+213 error code EBUSY
+214 error syscall copyfile
+215 error path C:\Users\trome\OneDrive\Desktop\Projetos\garagem\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node
+216 error dest C:\Users\trome\OneDrive\Desktop\Projetos\garagem\node_modules\@next\.swc-win32-x64-msvc-Lkvy8Z7M\next-swc.win32-x64-msvc.node
+217 error errno -4082
+218 error EBUSY: resource busy or locked, copyfile 'C:\Users\trome\OneDrive\Desktop\Projetos\garagem\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node' -> 'C:\Users\trome\OneDrive\Desktop\Projetos\garagem\node_modules\@next\.swc-win32-x64-msvc-Lkvy8Z7M\next-swc.win32-x64-msvc.node'
+219 silly unfinished npm timer reify 1793588003612
+220 silly unfinished npm timer reify:retireShallow 1793588023614
+221 verbose cwd C:\Users\trome\OneDrive\Desktop\Projetos\garagem
+222 verbose os Windows_NT 10.0.26300
+223 verbose node v24.21.0
+224 verbose npm  v11.19.0
+225 notice
+225 notice New major version of npm available! 11.19.0 -> 12.2.1
+225 notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+225 notice To update run: npm install -g npm@12.2.1
+225 notice  { force: true, Symbol(proc-log.meta): true }
+226 verbose exit -4082
+227 verbose code -4082
+228 error A complete log of this run can be found in: C:\Users\trome\OneDrive\Desktop\Projetos\garagem\.npm-cache\_logs\2026-11-02T02_53_21_926Z-debug-0.log

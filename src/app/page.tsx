@@ -1,27 +1,10 @@
-"use client";
+import { Suspense } from "react";
+import HomeServer from "./HomeServer";
 
-import type { ReactNode } from "react";
-import HomePage from "./screens/Home";
-import VagasPage from "./screens/Vagas";
-import RelatoriosPage from "./screens/Relatorios";
-import ClientsPage from "./screens/Clients";
-import { useControler } from "./provider/HeaderControler";
-
-const screens: Record<string, ReactNode> = {
-  Home: <HomePage />,
-  Vagas: <VagasPage />,
-  Clientes: <ClientsPage />,
-  Relatorios: <RelatoriosPage />,
-};
-
-export default function Home() {
-  const { ShowValue } = useControler();
-
-  const current = ShowValue();
-
+export default function Page() {
   return (
-    <div className="min-h-screen bg-[#f4f6f3] text-[#17211c]">
-      {screens[current] ?? <HomePage />}
-    </div>
+    <Suspense fallback={<p>Carregando garagem... 🚗</p>}>
+      <HomeServer />
+    </Suspense>
   );
 }
